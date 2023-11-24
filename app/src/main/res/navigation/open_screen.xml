@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/open_screen"
+    app:startDestination="@id/openFragment">
+
+    <fragment
+        android:id="@+id/openFragment"
+        android:name="com.uz.ui.fragments.open.OpenFragment"
+        android:label="OpenFragment">
+        <action
+            android:id="@+id/action_openFragment_to_base_graph"
+            app:destination="@id/base_graph" />
+        <action
+            android:id="@+id/action_openFragment_to_auth_graph"
+            app:destination="@id/auth_graph"
+            app:enterAnim="@anim/fragment_open_anim"
+            app:exitAnim="@anim/fragment_close_anim"
+            app:popEnterAnim="@anim/fragment_pop_enter"
+            app:popExitAnim="@anim/fragment_pop_exit" />
+    </fragment>
+    <include app:graph="@navigation/base_graph" />
+    <include app:graph="@navigation/auth_graph" />
+</navigation>

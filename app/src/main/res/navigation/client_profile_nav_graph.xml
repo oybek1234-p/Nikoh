@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/client_profile_nav_graph"
+    app:startDestination="@id/clientProfileFragment">
+
+    <fragment
+        android:id="@+id/clientProfileFragment"
+        android:name="com.uz.ui.fragments.profile.client.ClientProfileFragment"
+        android:label="ClientProfileFragment" >
+        <action
+            android:id="@+id/action_clientProfileFragment_to_editClientProfileFragment"
+            app:destination="@id/editClientProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editClientProfileFragment"
+        android:name="com.uz.ui.fragments.profile.client.EditClientProfileFragment"
+        android:label="EditClientProfileFragment" />
+</navigation>

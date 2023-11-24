@@ -1,0 +1,36 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Nikoh" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4C6707</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#CDEF84</item>
+        <item name="colorOnPrimaryContainer">#141F00</item>
+        <item name="colorSecondary">#5A6147</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#DEE6C5</item>
+        <item name="colorOnSecondaryContainer">#171E09</item>
+        <item name="colorTertiary">#396660</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">#BCECE4</item>
+        <item name="colorOnTertiaryContainer">#00201D</item>
+        <item name="colorError">#BA1A1A</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorErrorContainer">#FFDAD6</item>
+        <item name="colorOnErrorContainer">#410002</item>
+        <item name="colorSurface">#FBF9F1</item>
+        <item name="colorOnSurface">#1B1C17</item>
+        <item name="colorSurfaceContainerLowest">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F5F4EC</item>
+        <item name="colorSurfaceContainer">#968D4A</item>
+        <item name="colorSurfaceContainerHigh">#EAE8E0</item>
+        <item name="colorSurfaceContainerHighest">#E4E3DB</item>
+        <item name="colorSurfaceBright">#FBF9F1</item>
+        <item name="colorSurfaceDim">#DBDAD2</item>
+        <item name="colorSurfaceVariant">#E2E4D4</item>
+        <item name="colorOnSurfaceVariant">#45483C</item>
+        <item name="colorOutline">#76786B</item>
+        <item name="colorOutlineVariant">#C6C8B9</item>
+    </style>
+
+
+</resources>

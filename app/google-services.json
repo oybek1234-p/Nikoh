@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "19988949639",
+    "project_id": "nikoh-5cdd6",
+    "storage_bucket": "nikoh-5cdd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19988949639:android:8bfbf7fe9d7e34389ee622",
+        "android_client_info": {
+          "package_name": "com.uz.nikoh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAOL0m59Nf84bdudT5hUXE9UuOjh3umm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.uz.myapplication.MainActivity">
+    <item
+        android:id="@+id/home"
+        android:checked="true"
+        android:icon="@drawable/home_ic"
+        android:title="@string/asosiy" />
+
+    <item
+        android:id="@+id/saved"
+        android:icon="@drawable/fav_ic"
+        android:title="@string/saqlangan" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/account_ic"
+        android:title="@string/profil"
+        />
+
+</menu>
