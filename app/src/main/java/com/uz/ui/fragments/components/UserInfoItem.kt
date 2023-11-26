@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.uz.nikoh.R
 import com.uz.nikoh.databinding.UserInfoItemBinding
+import com.uz.nikoh.photo.loadUrl
 import com.uz.nikoh.user.User
 import com.uz.nikoh.utils.PhoneUtils
 import com.uz.ui.utils.toDp
@@ -22,14 +23,16 @@ class UserInfoItem @JvmOverloads constructor(
     var user: User? = null
         set(value) {
             field = value
-
+            
             binding.apply {
-                nameView.text = value?.name
-                phoneView.text = PhoneUtils.formatPhoneNumber(value?.phone ?: "-")
-                if (value?.photo.isNullOrEmpty()) {
-                    photoView.setImageResource(R.drawable.user_icon_placeholder)
-                } else {
-
+                value?.apply {
+                    nameView.text = name
+                    phoneView.text = PhoneUtils.formatPhoneNumber(phone ?: "-")
+                    if (photo.isEmpty()) {
+                        photoView.setImageResource(R.drawable.user_icon_placeholder)
+                    } else {
+                        photoView.loadUrl(photo)
+                    }
                 }
             }
         }

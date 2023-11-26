@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.NikohDark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#B2D26B</item>
+        <item name="colorOnPrimary">#253500</item>
+        <item name="colorPrimaryContainer">#384E00</item>
+        <item name="colorOnPrimaryContainer">#CDEF84</item>
+        <item name="colorSecondary">#C2CAAA</item>
+        <item name="colorOnSecondary">#2C331D</item>
+        <item name="colorSecondaryContainer">#424A31</item>
+        <item name="colorOnSecondaryContainer">#DEE6C5</item>
+        <item name="colorTertiary">#A0D0C8</item>
+        <item name="colorOnTertiary">#2C331D</item>
+        <item name="colorTertiaryContainer">#204E48</item>
+        <item name="colorOnTertiaryContainer">#BCECE4</item>
+        <item name="colorError">#FFB4AB</item>
+        <item name="colorOnError">#690005</item>
+        <item name="colorErrorContainer">#93000A</item>
+        <item name="colorOnErrorContainer">#FFDAD6</item>
+        <item name="colorSurface">#13140F</item>
+        <item name="colorOnSurface">#C8C7BF</item>
+        //Need rewrite
+        <item name="colorSurfaceContainerLowest">#0E0F0A</item>
+        <item name="colorSurfaceContainerLow">#1B1C17</item>
+        <item name="colorSurfaceContainer">#1F201B</item>
+        <item name="colorSurfaceContainerHigh">#2A2A25</item>
+        <item name="colorSurfaceContainerHighest">#343530</item>
+        <item name="colorSurfaceBright">#393A34</item>
+        <item name="colorSurfaceDim">#13140F</item>
+        <item name="colorSurfaceVariant">#45483C</item>
+        <item name="colorOnSurfaceVariant">#C6C8B9</item>
+        <item name="colorOutline">#909284</item>
+        <item name="colorOutlineVariant">#45483C</item>
+    </style>
+</resources>

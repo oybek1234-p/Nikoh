@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.postDelayed
+import com.google.android.material.color.MaterialColors
 import com.uz.base.exception.ExceptionHandler
 import com.uz.nikoh.appContext
 
@@ -55,3 +56,10 @@ fun toDp(value: Float): Int {
         TypedValue.COMPLEX_UNIT_DIP, value, appContext.resources.displayMetrics
     ).toInt()
 }
+
+fun Context.getMaterialColor(colorId: Int) =
+    MaterialColors.getColor(
+        this,
+        colorId,
+        0
+    )

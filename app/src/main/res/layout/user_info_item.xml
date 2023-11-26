@@ -13,8 +13,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photo_view"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:scaleType="centerCrop"
             android:background="?colorSurfaceContainerHighest"
             app:layout_constraintStart_toStartOf="parent"

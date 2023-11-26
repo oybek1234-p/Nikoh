@@ -2,12 +2,14 @@ package com.uz.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.uz.nikoh.R
 import com.uz.nikoh.databinding.ActivityMainBinding
+import com.uz.nikoh.locale.LocaleController
 import com.uz.nikoh.user.CurrentUser
 import com.uz.ui.utils.visibleOrGone
 
@@ -15,18 +17,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navcontroller: NavController
+    private lateinit var navHost: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleController.init(this)
+        AppTheme.setTheme()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
-
-            navcontroller =
-                (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+            navHost =
+                (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
+            navcontroller = navHost.navController
         }
         showBottomSheet(false, animate = false)
+
         if (CurrentUser.userLogged().not()) {
             showOpenScreen()
         } else {
@@ -75,4 +81,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }

@@ -3,14 +3,18 @@ package com.uz.nikoh.user
 import androidx.lifecycle.MutableLiveData
 import com.uz.base.data.firebase.firebaseAuth
 import com.uz.base.data.firebase.justResult
+import com.uz.base.imagekit.ImageUploader
 import com.uz.nikoh.utils.TimeUtils
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 object CurrentUser {
 
     private val config = UserConfig()
     val user: User get() = config.user
     val userLive = MutableLiveData(user)
-
+    val photoUploading = MutableLiveData(false)
 
     fun userLogged() = user.id.isNotEmpty()
 
@@ -30,6 +34,29 @@ object CurrentUser {
             }
         } else {
             done?.invoke(true)
+        }
+    }
+
+    private fun setPhotoTemp(path: String) {
+        user.photo = path
+        userLive.postValue(user)
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    fun setPhoto(path: String) {
+        if (userLogged().not()) return
+        setPhotoTemp(path)
+
+        photoUploading.postValue(true)
+        GlobalScope.launch {
+            val uploaded = ImageUploader.uploadImage(path).await()
+            photoUploading.postValue(false)
+            uploaded.data?.let {
+                setPhoto(it.url)
+                user.photo = it.url
+                updateUser(network = false)
+                userReference().updateChildren(mapOf(Pair(User::photo.name, it.url)))
+            }
         }
     }
 

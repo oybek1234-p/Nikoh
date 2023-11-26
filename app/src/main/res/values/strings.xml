@@ -42,4 +42,42 @@
     <string name="auth_placeholder_subtitle">Platformadan to\'liq foydalanish uchun profil oching</string>
     <string name="hsb">Hozircha saqlanganlar bo\'sh</string>
     <string name="sssyk">Saqlangan servislar shu yerda ko\'rinadi</string>
+    <string name="uzbek">Uzbek</string>
+    <string name="ruscha">Ruscha</string>
+    <string name="til">Til</string>
+
+    <string name="oformleniya">Oformleniya</string>
+    <string name="zaks">Zaks</string>
+    <string name="qo_shiqchi">Qo\'shiqchi</string>
+    <string name="restoran">Restoran</string>
+    <string name="boshlovchi">Boshlovchi</string>
+    <string name="kartej">Kartej</string>
+    <string name="kuylak">Kuylak</string>
+    <string name="gullar">Gullar</string>
+    <string name="sarpo">Sarpo</string>
+    <string name="video">Video</string>
+    <string name="foto">Foto</string>
+    <string name="hostes">Hostes</string>
+    <string name="kvartet">Kvartet</string>
+    <string name="raqqoslar">Raqqoslar</string>
+    <string name="milliy">Milliy</string>
+    <string name="offisiant">Offisiant</string>
+    <string name="dj"><![CDATA[D & J]]></string>
+    <string name="povar">Povar</string>
+    <string name="tort">Tort</string>
+    <string name="kulgu">Kulgu</string>
+    <string name="prokat">Prokat</string>
+    <string name="monitor">Monitor</string>
+    <string name="ovoz">Ovoz</string>
+    <string name="admin">Admin</string>
+    <string name="hammasi">Hammasi</string>
+    <string name="karvin">Karvin</string>
+
+    <string name="kategoriyalar">Kategoriyalar</string>
+    <string name="kategoriyani_tanlang">Kategoriyani tanlang</string>
+    <string name="qora_tema">Qora tema</string>
+    <string name="biznes_nomi">Biznes nomi</string>
+    <string name="biznes_turini_tanlash">Biznes turini tanlash</string>
+    <string name="biznes_turi">"Biznes turi"</string>
+
 </resources>

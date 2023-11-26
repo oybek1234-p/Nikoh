@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nikoh</string>
+    <string name="tuy_onson">dookd</string>
+    <string name="tuy_onson_subtitle">dd</string>
+    <string name="avtorizatsiya">Авторизация</string>
+    <string name="registratsiya">Регистрация</string>
+    <string name="keyinroq">Пропустить</string>
+    <string name="asosiy">Главный</string>
+    <string name="saqlangan">Избранние</string>
+    <string name="profil">Профиль</string>
+    <string name="davom_etish">Продолжить</string>
+    <string name="akkaunt">Аккаунт</string>
+    <string name="sozlamalar">Настройки</string>
+    <string name="yordam">Помошь</string>
+    <string name="biznes_akk_otish">Бизнесс аккаунт</string>
+    <string name="til">Язык</string>
+
+    <string name="oformleniya">Oformleniya</string>
+    <string name="zaks">Zaks</string>
+    <string name="qo_shiqchi">Qo\'shiqchi</string>
+    <string name="restoran">Restoran</string>
+    <string name="boshlovchi">Boshlovchi</string>
+    <string name="kartej">Kartej</string>
+    <string name="kuylak">Kuylak</string>
+    <string name="gullar">Gullar</string>
+    <string name="sarpo">Sarpo</string>
+    <string name="video">Video</string>
+    <string name="foto">Foto</string>
+    <string name="hostes">Hostes</string>
+    <string name="kvartet">Kvartet</string>
+    <string name="raqqoslar">Raqqoslar</string>
+    <string name="milliy">Milliy</string>
+    <string name="offisiant">Offisiant</string>
+    <string name="dj"><![CDATA[D & J]]></string>
+    <string name="povar">Povar</string>
+    <string name="tort">Tort</string>
+    <string name="kulgu">Kulgu</string>
+    <string name="prokat">Prokat</string>
+    <string name="monitor">Monitor</string>
+    <string name="ovoz">Ovoz</string>
+
+    <string name="admin">Admin</string>
+    <string name="hammasi">Hammasi</string>
+    <string name="karvin">Karvin</string>
+</resources>

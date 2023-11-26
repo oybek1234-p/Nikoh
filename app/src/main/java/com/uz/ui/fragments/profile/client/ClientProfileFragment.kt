@@ -25,20 +25,23 @@ class ClientProfileFragment : BaseFragment<FragmentClientProfileBinding>() {
             }
             buttonSettings.apply {
                 title = context.getString(R.string.sozlamalar)
+                iconRes = R.drawable.settings_ic
                 setOnClickListener {
-
+                    navigate(R.id.settingsFragment)
                 }
             }
             buttonHelp.apply {
+                iconRes = R.drawable.help_ic
                 title = context.getString(R.string.yordam)
                 setOnClickListener {
 
                 }
             }
             businessChangeButton.apply {
+                iconRes = R.drawable.business_ic
                 title = context.getString(R.string.biznes_akk_otish)
                 setOnClickListener {
-
+                    navigate(R.id.newBusinessOpenFragment)
                 }
             }
         }

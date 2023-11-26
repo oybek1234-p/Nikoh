@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_18"
+        android:paddingVertical="@dimen/dimen_12">
+
+        <TextView
+            android:id="@+id/title_view"
+            style="@style/Text1_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textColor="?colorOnSurface" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/check_box"
+            android:layout_width="@dimen/dimen_24"
+            android:layout_height="@dimen/dimen_24"
+            android:layout_gravity="end"
+            android:clickable="false"
+            android:focusable="false" />
+    </FrameLayout>
+</layout>

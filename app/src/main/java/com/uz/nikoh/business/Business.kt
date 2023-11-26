@@ -1,7 +1,7 @@
 package com.uz.nikoh.business
 
 import com.uz.nikoh.location.LocationData
-import com.uz.nikoh.photo.ImageData
+import com.uz.base.imagekit.ImageData
 import com.uz.nikoh.user.UserMini
 
 /**

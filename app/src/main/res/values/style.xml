@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="FilledButton" parent="ThemeOverlay.Material3.Button">
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
 
-    <style name="OutlineButton" parent="Widget.Material3.Button.OutlinedButton" >
+    <style name="OutlineButton" parent="Widget.Material3.Button.OutlinedButton">
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
+
     <style name="ToolbarTitleApearence" parent="TextAppearance.AppCompat.Title">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">20sp</item>
     </style>
+
     <style name="CircleImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

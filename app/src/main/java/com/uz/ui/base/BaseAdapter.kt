@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 open class BaseAdapter<Model, Binding : ViewDataBinding>(
-    private val itemResId: Int,
-    diffUtil: DiffUtil.ItemCallback<Model>
-) :
-    ListAdapter<Model, ViewHolder>(diffUtil) {
+    private val itemResId: Int, diffUtil: DiffUtil.ItemCallback<Model>
+) : ListAdapter<Model, ViewHolder>(diffUtil) {
 
     private var clickListeners = mutableSetOf<ListClickListener<Model>>()
 
@@ -39,10 +37,7 @@ open class BaseAdapter<Model, Binding : ViewDataBinding>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = DataBindingUtil.inflate<Binding>(
-            LayoutInflater.from(parent.context),
-            itemResId,
-            parent,
-            false
+            LayoutInflater.from(parent.context), itemResId, parent, false
         )
         val viewHolder = ViewHolder<Binding>(binding)
         viewHolder.itemView.apply {
@@ -66,5 +61,15 @@ open class BaseAdapter<Model, Binding : ViewDataBinding>(
         if (holder is ViewHolder<*>) {
             bind(holder, getItem(position), position)
         }
+    }
+}
+
+class EmptyDiffUtil<T> : DiffUtil.ItemCallback<T>() {
+    override fun areContentsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areItemsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
+        return oldItem.hashCode() == newItem.hashCode()
     }
 }

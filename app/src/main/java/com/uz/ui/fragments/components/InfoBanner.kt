@@ -30,7 +30,7 @@ class InfoBanner @JvmOverloads constructor(
     companion object {
         val bannerAuthNeeded by lazy {
             InfoBannerData(
-                R.drawable.auth_icon_photo,
+                R.drawable.user_icon_placeholder,
                 appContext.getString(R.string.akauntga_kiring),
                 appContext.getString(R.string.auth_placeholder_subtitle),
                 appContext.getString(R.string.kirish)

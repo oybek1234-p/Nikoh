@@ -10,7 +10,7 @@ import com.uz.ui.base.BaseFragment
 import com.uz.ui.fragments.components.InfoBanner
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
-    
+
     override val layId: Int
         get() = R.layout.fragment_profile
 

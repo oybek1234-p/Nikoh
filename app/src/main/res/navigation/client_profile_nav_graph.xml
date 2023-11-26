@@ -16,4 +16,29 @@
         android:id="@+id/editClientProfileFragment"
         android:name="com.uz.ui.fragments.profile.client.EditClientProfileFragment"
         android:label="EditClientProfileFragment" />
+
+    <dialog
+        android:id="@+id/photoGetFragment"
+        android:name="com.uz.ui.fragments.photo.PhotoGetFragment"
+        android:label="PhotoGetFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.uz.ui.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/changeLanguageFragment"
+        android:name="com.uz.ui.fragments.settings.ChangeLanguageFragment"
+        android:label="ChangeLanguageFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.uz.ui.fragments.category.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/newBusinessFragment"
+        android:name="com.uz.ui.fragments.profile.client.newbusines.NewBusinessFragment"
+        android:label="NewBusinessFragment" />
+    <fragment
+        android:id="@+id/newBusinessOpenFragment"
+        android:name="com.uz.ui.fragments.profile.client.newbusines.NewBusinessOpenFragment"
+        android:label="NewBusinessOpenFragment" />
 </navigation>

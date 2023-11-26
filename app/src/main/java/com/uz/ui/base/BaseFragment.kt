@@ -30,6 +30,8 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     }
 
+    open fun onPhotoGetResult(paths: List<String>) {}
+
     fun navigate(@IdRes resId: Int, args: Bundle? = null) {
         findNavController().navigate(
             resId,

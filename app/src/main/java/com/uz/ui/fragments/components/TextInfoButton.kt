@@ -3,7 +3,6 @@ package com.uz.ui.fragments.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import com.uz.nikoh.databinding.ButtonInfoBinding
 import com.uz.ui.utils.visibleOrGone
@@ -28,6 +27,17 @@ class TextInfoButton @JvmOverloads constructor(
             binding.subtitleView.apply {
                 visibleOrGone(value.isEmpty().not())
                 text = value
+            }
+        }
+
+    var iconRes = 0
+        set(value) {
+            field = value
+            if (value != 0) {
+                binding.iconView.apply {
+                    visibleOrGone(true)
+                    setImageResource(value)
+                }
             }
         }
 

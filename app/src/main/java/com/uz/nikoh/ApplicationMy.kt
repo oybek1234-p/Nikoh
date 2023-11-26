@@ -8,8 +8,8 @@ lateinit var appContext: Context
 
 class ApplicationMy : Application() {
     override fun onCreate() {
-        super.onCreate()
         appContext = this
+        super.onCreate()
         ImageKitUtils.initImageKit(this)
     }
 }
