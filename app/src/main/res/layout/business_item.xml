@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_18"
+        android:paddingVertical="@dimen/dimen_12">
+
+        <ImageView
+            android:id="@+id/add_photo_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:src="@drawable/add_image_ic"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_view"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view"
+            app:layout_constraintStart_toStartOf="@+id/photo_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?colorPrimary" />
+
+        <TextView
+            android:id="@+id/photo_count_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_8"
+            android:elevation="@dimen/dimen_4"
+            android:gravity="center"
+            style="@style/Headline3_15"
+            android:textColor="@color/white"
+            app:drawableLeftCompat="@drawable/image_ic"
+            app:drawableTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_view"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photo_view"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="?colorSurfaceVariant"
+            app:layout_constraintDimensionRatio="1:0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RadiusImageView12" />
+
+        <TextView
+            android:id="@+id/title_view"
+            style="@style/Title3_17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_12"
+            android:text="@string/venue_title_place"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintStart_toEndOf="@+id/photo_view"
+            app:layout_constraintTop_toTopOf="@+id/photo_view" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_button"
+            style="@style/OutlineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:clickable="false"
+            android:editable="false"
+            android:focusable="false"
+            android:text="@string/sozlamalar"
+            app:icon="@drawable/settings_ic"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toBottomOf="@+id/title_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

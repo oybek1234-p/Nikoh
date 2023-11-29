@@ -4,10 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import com.uz.base.data.firebase.firebaseAuth
 import com.uz.base.data.firebase.justResult
 import com.uz.base.imagekit.ImageUploader
+import com.uz.nikoh.business.Business
+import com.uz.nikoh.business.BusinessController
+import com.uz.nikoh.business.BusinessOwner
 import com.uz.nikoh.utils.TimeUtils
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 object CurrentUser {
 
@@ -15,6 +21,25 @@ object CurrentUser {
     val user: User get() = config.user
     val userLive = MutableLiveData(user)
     val photoUploading = MutableLiveData(false)
+
+    var businessOwner: BusinessOwner? = null
+
+    init {
+        if (user.isBusiness) {
+            businessOwner = BusinessOwner()
+        }
+        updateFromNetwork()
+    }
+
+    private fun updateFromNetwork() {
+        if (userLogged()) {
+            UserController.loadUser(user.id) {
+                if (it.success && it.data != null) {
+                    updateUser(it.data, network = false)
+                }
+            }
+        }
+    }
 
     fun userLogged() = user.id.isNotEmpty()
 
@@ -67,9 +92,9 @@ object CurrentUser {
         userReference().updateChildren(mapOf(Pair(User::name.name, name)))
     }
 
-    fun applyFirebaseUser(result: (user: User?) -> Unit) {
-        val firebaseUser = firebaseAuth().currentUser ?: return
-        if (firebaseUser.phoneNumber.isNullOrEmpty()) return
+    suspend fun applyFirebaseUser(result: (user: User?) -> Unit) = withContext(Dispatchers.Main) {
+        val firebaseUser = firebaseAuth().currentUser ?: return@withContext
+        if (firebaseUser.phoneNumber.isNullOrEmpty()) return@withContext
         val uid = firebaseUser.uid
 
         UserController.loadUser(uid) {
@@ -82,9 +107,48 @@ object CurrentUser {
                     createdAt = TimeUtils.currentTime()
                 }
             }
-            updateUser(user, network = exists.not()) {
-                result.invoke(user)
+            val done = {
+                updateUser(user, network = exists.not()) {
+                    result.invoke(user)
+                }
+            }
+            if (exists && user.isBusiness) {
+                MainScope().launch {
+                    val businessL = BusinessController.loadBusiness(user.id)
+                    if (businessL != null) {
+                        businessOwner = BusinessOwner().apply {
+                            update(businessL, false)
+                        }
+                        done.invoke()
+                    } else {
+                        result.invoke(null)
+                    }
+                }
+            } else {
+                done.invoke()
             }
         }
     }
+
+    fun changeToBusiness(name: String, catId: String, done: (success: Boolean) -> Unit) {
+        user.isBusiness = true
+        updateUser {
+            if (it) {
+                val newBusiness = Business().apply {
+                    id = user.id
+                    this.name = name
+                    this.categoryId = catId
+                    admin = user.mini()
+                }
+                businessOwner = BusinessOwner().apply {
+                    update(newBusiness, true, done = done)
+                }
+            } else {
+                user.isBusiness = false
+                userLive.postValue(user)
+                done.invoke(false)
+            }
+        }
+    }
+
 }

@@ -14,7 +14,13 @@ fun ImageView.loadUrl(
 ) {
     doOnLayout {
         val loadUrl = if (ImageKitUtils.isUrlImageKit(url)) {
-            ImageKitUtils.buildUrl(url, measuredHeight, measuredWidth, fullQuality, blur = blur)
+            ImageKitUtils.buildUrl(
+                url,
+                if (fullQuality) 0 else measuredHeight,
+                if (fullQuality) 0 else measuredWidth,
+                fullQuality,
+                blur = blur
+            )
         } else url
         load(loadUrl) {
             if (fade) {

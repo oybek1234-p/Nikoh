@@ -47,12 +47,12 @@ class CategoryFragment : BaseFragment<FragmentCategoriesBinding>() {
                     (this as CategoryItemBinding)
                     root.setBackgroundColor(
                         requireContext().getMaterialColor(
-                            if (selected) com.google.android.material.R.attr.colorPrimary else com.google.android.material.R.attr.colorSurface,
+                            if (selected) com.google.android.material.R.attr.colorSecondaryContainer else com.google.android.material.R.attr.colorSurface,
                         )
                     )
                     titleView.setTextColor(
                         requireContext().getMaterialColor(
-                            if (selected) com.google.android.material.R.attr.colorOnPrimary else com.google.android.material.R.attr.colorOnSurface,
+                            if (selected) com.google.android.material.R.attr.colorOnSecondaryContainer else com.google.android.material.R.attr.colorOnSurface,
                         )
                     )
                     photoView.loadUrl(getString(model.photoResId))

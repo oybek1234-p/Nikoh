@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.uz.ui.BaseConfig
+import com.uz.ui.MainActivity
 import java.util.Locale
 
 object LocaleController {
@@ -17,6 +18,7 @@ object LocaleController {
         setLocale(activity, BaseConfig.languageCode, true)
     }
 
+
     fun setLocale(activity: Activity, languageCode: String, start: Boolean = false) {
         if (languageCode == BaseConfig.languageCode && !start) return
         BaseConfig.languageCode = languageCode
@@ -29,11 +31,9 @@ object LocaleController {
         val config: Configuration = resources.configuration
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
-//        if (!start) {
-//            val intent = Intent(activity, MainActivity::class.java)
-//            activity.startActivity(intent)
-//            activity.finish()
-//        }
+        if (activity is MainActivity) {
+            activity.localeChanged()
+        }
     }
 
     fun currentLocale() = locales.find { it.language == BaseConfig.languageCode }

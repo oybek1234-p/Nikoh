@@ -5,7 +5,6 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        mavenCentral()
         google()
     }
 }
@@ -14,11 +13,14 @@ plugins {
     id("com.android.application") version "8.1.2" apply false
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
+
+    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin") version "2.0.1" apply false
+    kotlin("jvm") version "1.9.20" // or kotlin("multiplatform") or any other kotlin plugin
+    kotlin("plugin.serialization") version "1.9.20" apply false
 }
 
 allprojects {
     repositories {
-        mavenCentral()
         jcenter()
         mavenCentral()
         google()

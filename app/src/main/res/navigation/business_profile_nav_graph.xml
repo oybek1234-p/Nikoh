@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/business_profile_nav_graph">
-
+    android:id="@+id/business_profile_nav_graph"
+    app:startDestination="@id/businessProfileFragment">
+    <fragment
+        android:id="@+id/businessProfileFragment"
+        android:name="com.uz.ui.fragments.profile.business.BusinessProfileFragment"
+        android:label="BusinessProfileFragment" />
+    <fragment
+        android:id="@+id/changeLanguageFragment"
+        android:name="com.uz.ui.fragments.settings.ChangeLanguageFragment"
+        android:label="ChangeLanguageFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.uz.ui.fragments.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/editClientProfileFragment"
+        android:name="com.uz.ui.fragments.profile.client.EditClientProfileFragment"
+        android:label="EditClientProfileFragment" />
+    <dialog
+        android:id="@+id/photoGetFragment"
+        android:name="com.uz.ui.fragments.photo.PhotoGetFragment"
+        android:label="PhotoGetFragment" />
+    <fragment
+        android:id="@+id/businessNameAndAboutFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessNameAndAboutFragment"
+        android:label="BusinessNameAndAboutFragment" />
+    <fragment
+        android:id="@+id/businessSettingsFragment"
+        android:name="com.uz.ui.fragments.profile.business.BusinessSettingsFragment"
+        android:label="BusinessSettingsFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.uz.ui.fragments.category.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/businessPhotosFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessPhotosFragment"
+        android:label="BusinessPhotosFragment" />
+    <fragment
+        android:id="@+id/businessPhotoEditFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessPhotoEditFragment"
+        android:label="BusinessPhotoEditFragment" />
+    <fragment
+        android:id="@+id/businessVideoFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessVideoFragment"
+        android:label="BusinessVideoFragment" />
+    <fragment
+        android:id="@+id/businessMediaLinksFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessMediaLinksFragment"
+        android:label="BusinessMediaLinksFragment" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.uz.ui.fragments.location.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/businessLocationFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessLocationFragment"
+        android:label="BusinessLocationFragment" />
 </navigation>

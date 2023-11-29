@@ -4,6 +4,8 @@ plugins {
     id("com.google.gms.google-services")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
+    kotlin("plugin.serialization")
+    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -56,6 +58,8 @@ dependencies {
     implementation("com.google.firebase:firebase-inappmessaging-display:20.4.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -75,9 +79,13 @@ dependencies {
     api ("io.reactivex.rxjava2:rxandroid:2.1.1")
     api ("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.7.2")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.4.0")
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
+    implementation ("io.ktor:ktor-client-android:1.5.0")
 
     implementation ("id.zelory:compressor:3.0.1")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
 }

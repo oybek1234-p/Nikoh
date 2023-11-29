@@ -27,6 +27,7 @@ class UserInfoItem @JvmOverloads constructor(
             binding.apply {
                 value?.apply {
                     nameView.text = name
+
                     phoneView.text = PhoneUtils.formatPhoneNumber(phone ?: "-")
                     if (photo.isEmpty()) {
                         photoView.setImageResource(R.drawable.user_icon_placeholder)

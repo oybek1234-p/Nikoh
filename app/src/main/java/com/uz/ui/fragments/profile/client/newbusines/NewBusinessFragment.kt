@@ -4,13 +4,15 @@ import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.uz.nikoh.R
 import com.uz.nikoh.category.Categories
 import com.uz.nikoh.databinding.FragmentNewBusinessBinding
 import com.uz.ui.base.BaseFragment
 import com.uz.ui.fragments.category.CategoryFragment
 import com.uz.ui.utils.showKeyboard
-import com.uz.ui.utils.showToast
+import com.uz.ui.utils.visibleOrGone
+import kotlinx.coroutines.launch
 
 class NewBusinessFragment : BaseFragment<FragmentNewBusinessBinding>() {
 
@@ -46,6 +48,10 @@ class NewBusinessFragment : BaseFragment<FragmentNewBusinessBinding>() {
 
                         chooseCatButton.editText?.setText(category?.name)
                     }
+                    loading.observe(viewLifecycleOwner) {
+                        progressBar.visibleOrGone(it)
+                        continueButton.isEnabled = it.not()
+                    }
                 }
                 nameView.editText?.apply {
                     setText(viewModel.name.value)
@@ -67,8 +73,12 @@ class NewBusinessFragment : BaseFragment<FragmentNewBusinessBinding>() {
                     }
                 }
                 continueButton.setOnClickListener {
-                    //->
-                    showToast("Create business")
+                    lifecycleScope.launch {
+                        val success = viewModel.changeToBusiness()
+                        if (success) {
+                            mainActivity()?.recreateMy()
+                        }
+                    }
                 }
             }
         }

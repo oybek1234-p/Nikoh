@@ -1,3 +1,10 @@
 package com.uz.nikoh.category
 
-class SubCategory(var id: Int, var name: String)
+import com.uz.nikoh.R
+
+enum class SubCategory(
+    var nameResId: Int, var photoResId: Int
+) {
+    KuyovNavkar(R.string.kuyov_navkar, -1)
+}
+

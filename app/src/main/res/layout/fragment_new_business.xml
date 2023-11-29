@@ -41,16 +41,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_18"
             android:hint="@string/biznes_turi"
-            app:hintTextColor="?colorPrimary"
             android:textColorHint="?colorOnSurface"
+            app:hintTextColor="?colorPrimary"
             app:layout_constraintEnd_toEndOf="@+id/name_view"
             app:layout_constraintStart_toStartOf="@+id/name_view"
             app:layout_constraintTop_toBottomOf="@+id/name_view">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:textColor="?colorPrimary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="?colorPrimary" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -64,5 +64,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toTopOf="@+id/continue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choose_cat_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

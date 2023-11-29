@@ -1,9 +1,11 @@
 package com.uz.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -11,20 +13,25 @@ import com.uz.nikoh.R
 import com.uz.nikoh.databinding.ActivityMainBinding
 import com.uz.nikoh.locale.LocaleController
 import com.uz.nikoh.user.CurrentUser
+import com.uz.ui.utils.getMaterialColor
 import com.uz.ui.utils.visibleOrGone
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
     private lateinit var navcontroller: NavController
     private lateinit var navHost: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         LocaleController.init(this)
-        AppTheme.setTheme()
+        AppTheme.setTheme(this)
         super.onCreate(savedInstanceState)
+        themeChanged()
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding!!.root)
 
         binding.apply {
             navHost =
@@ -49,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             navcontroller.popBackStack()
         }
         navcontroller.setGraph(R.navigation.base_graph)
-        binding.bottomNavView.setupWithNavController(navcontroller)
+        binding?.bottomNavView?.setupWithNavController(navcontroller)
     }
 
     private var bottomSetUp = false
@@ -58,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     fun showBottomSheet(show: Boolean, animate: Boolean) {
         if (bottomNavShown == show) return
         bottomNavShown = show
-        binding.bottomNavView.apply {
+        binding?.bottomNavView?.apply {
             if (!bottomSetUp && show) {
                 bottomSetUp = true
             }
@@ -79,6 +86,30 @@ class MainActivity : AppCompatActivity() {
             } else {
                 visibleOrGone(show)
             }
+        }
+    }
+
+    fun localeChanged() {
+        binding?.bottomNavView?.apply {
+            menu.clear()
+            inflateMenu(R.menu.bottom_menu)
+            setupWithNavController(navcontroller)
+        }
+    }
+
+    fun themeChanged() {
+        window.statusBarColor = getMaterialColor(com.google.android.material.R.attr.colorSurface)
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
+            !AppTheme.isNightMode
+    }
+
+    fun recreateMy() {
+        lifecycleScope.launch(Dispatchers.Main) {
+            delay(500)
+            val intent = Intent(this@MainActivity, MainActivity::class.java)
+            startActivity(intent) // start same activity
+            finish()
+            overridePendingTransition(0, 0)
         }
     }
 

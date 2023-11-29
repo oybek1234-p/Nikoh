@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.uz.nikoh.R
 import com.uz.nikoh.databinding.ButtonInfoBinding
 import com.uz.ui.utils.visibleOrGone
 
@@ -63,7 +64,14 @@ class TextInfoButton @JvmOverloads constructor(
 
     init {
         setBackgroundRipple()
-        setPadding(Dps.DP_18.value, Dps.DP_12.value, Dps.DP_18.value, Dps.DP_12.value)
+        setPadding(Dps.DP_18.value, Dps.DP_14.value, Dps.DP_18.value, Dps.DP_14.value)
+
+        val style = context.obtainStyledAttributes(attrs, R.styleable.TextInfoButton)
+        arrowEnabled = style.getBoolean(R.styleable.TextInfoButton_arrowEnabled, true)
+        iconRes = style.getResourceId(R.styleable.TextInfoButton_iconRes, 0)
+        subtitle = style.getString(R.styleable.TextInfoButton_subtitle) ?: ""
+        title = style.getString(R.styleable.TextInfoButton_title).toString()
+        style.recycle()
     }
 
 }

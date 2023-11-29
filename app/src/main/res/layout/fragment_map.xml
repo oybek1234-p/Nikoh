@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <ImageView
+            android:id="@+id/marker_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="30dp"
+            android:elevation="@dimen/dimen_2"
+            android:src="@drawable/location_ic"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/supportMapFragment"
+            app:tint="?colorPrimary" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/supportMapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/back_button"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="@dimen/dimen_24"
+            android:background="?colorSurface"
+            android:elevation="4dp"
+            android:scaleType="center"
+            android:src="@drawable/arrow_back"
+            android:tint="?colorOnSurface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:animateLayoutChanges="true"
+            android:background="?colorSurface"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_24"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen_12"
+                    android:src="@drawable/location_ic"
+                    app:tint="?colorOnSurface" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_bar"
+                    android:layout_width="@dimen/dimen_20"
+                    android:layout_height="@dimen/dimen_20"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    app:indicatorSize="@dimen/dimen_24" />
+
+                <TextView
+                    android:id="@+id/address_view"
+                    style="@style/Title3_17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Sample address"
+                    android:textColor="?colorOnSurface" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continue_button"
+                style="@style/FilledButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_24"
+                android:text="@string/davom_etish" />
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/current_button"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_margin="@dimen/dimen_24"
+            android:background="?colorSurface"
+            android:elevation="4dp"
+            android:scaleType="center"
+            android:src="@drawable/current_loc_ic"
+            android:tint="?colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="@+id/supportMapFragment"
+            app:layout_constraintEnd_toEndOf="@+id/supportMapFragment"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

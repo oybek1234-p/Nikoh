@@ -11,13 +11,17 @@ import androidx.core.view.postDelayed
 import com.google.android.material.color.MaterialColors
 import com.uz.base.exception.ExceptionHandler
 import com.uz.nikoh.appContext
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 fun View.visibleOrGone(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
 }
 
 fun showToast(message: String) {
-    Toast.makeText(appContext, message, Toast.LENGTH_SHORT).show()
+    MainScope().launch {
+        Toast.makeText(appContext, message, Toast.LENGTH_SHORT).show()
+    }
 }
 
 private fun showKeyboard(view: View?) {

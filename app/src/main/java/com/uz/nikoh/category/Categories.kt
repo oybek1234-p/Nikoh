@@ -10,7 +10,7 @@ object Categories {
         OFORMLENIYA, ZAKS, QOSHIQCHI, KARTEJ, BOSHLOVCHI, KUYLAK, GULLAR, VIDEO, FOTO, RESTORAN, HOSTES, KVARTET, RAQQOSLAR, MILLIY, OFISIANT, DJ, POVAR, TORT, KULGU, PROKAT, MONITOR, OVOZ, SARPO_SANDIQ, KARVIN
     }
 
-    fun getString(id: Int) = appContext.getString(id)
+    private fun getString(id: Int) = appContext.getString(id)
 
     val categories by lazy {
         listOf(
@@ -50,4 +50,5 @@ object Categories {
     }
 
     fun getCategory(id: CatsId) = categories.find { it.catId == id }
+    fun getCategory(nameId: String) = categories.find { it.catId.name == nameId }
 }

@@ -7,6 +7,7 @@ pluginManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
+
 rootProject.name = "Nikoh"
 include(":app")
  

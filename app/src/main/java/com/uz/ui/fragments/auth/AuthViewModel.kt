@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.uz.nikoh.R
@@ -12,6 +13,7 @@ import com.uz.nikoh.auth.AuthController
 import com.uz.nikoh.auth.TimeOutCounter
 import com.uz.nikoh.user.CurrentUser
 import com.uz.ui.utils.showToast
+import kotlinx.coroutines.launch
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -30,9 +32,11 @@ class AuthViewModel : ViewModel() {
 
     suspend fun applyNewUser() = suspendCoroutine { c ->
         loading.postValue(true)
-        CurrentUser.applyFirebaseUser {
-            loading.postValue(false)
-            c.resume(it != null)
+        viewModelScope.launch {
+            CurrentUser.applyFirebaseUser {
+                loading.postValue(false)
+                c.resume(it != null)
+            }
         }
     }
 

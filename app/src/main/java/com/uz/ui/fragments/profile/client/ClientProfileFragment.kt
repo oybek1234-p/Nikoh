@@ -4,6 +4,7 @@ import com.uz.nikoh.R
 import com.uz.nikoh.databinding.FragmentClientProfileBinding
 import com.uz.nikoh.user.CurrentUser
 import com.uz.ui.base.BaseFragment
+import com.uz.ui.utils.showToast
 
 class ClientProfileFragment : BaseFragment<FragmentClientProfileBinding>() {
 
@@ -36,6 +37,9 @@ class ClientProfileFragment : BaseFragment<FragmentClientProfileBinding>() {
                 setOnClickListener {
 
                 }
+            }
+            CurrentUser.businessOwner?.business?.name?.let {
+                showToast(it)
             }
             businessChangeButton.apply {
                 iconRes = R.drawable.business_ic

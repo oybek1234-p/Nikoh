@@ -79,5 +79,36 @@
     <string name="biznes_nomi">Biznes nomi</string>
     <string name="biznes_turini_tanlash">Biznes turini tanlash</string>
     <string name="biznes_turi">"Biznes turi"</string>
+    <string name="wifi">Wifi</string>
+    <string name="kuyov_navkar">Kuyov navkar</string>
+    <string name="venue_title_place">Yakkasaroy palace</string>
+    <string name="biznes">Biznes</string>
+    <string name="biznes_haqida">Biznes haqida</string>
+    <string name="malumot">Malumot</string>
+    <string name="nomi_va_haqida">Nomi va haqida</string>
+    <string name="biz_malumot">Biznesingiz haqida to\'liq malumot kiriting</string>
+    <string name="rasmlar">Rasmlar</string>
+    <string name="media_linklar">Media linklar</string>
+    <string name="joylashuv">Joylashuv</string>
+    <string name="subkategoriyalar">Subkategoriyalar</string>
+    <string name="qulayliklar">Qulayliklar</string>
+    <string name="tovarlar">Tovarlar</string>
+    <string name="rasmlarni_yuklang">Rasmlarni yuklang</string>
+    <string name="yuklash"><![CDATA[Yuklash >]]></string>
+    <string name="kategoriya">Kategoriya</string>
+    <string name="asosiy_rasm">Asosiy rasm</string>
+    <string name="qo_shish">Rasm qo\'shish</string>
+    <string name="o_zgartirish">O\'zgartirish</string>
+    <string name="rasm">Rasm</string>
+    <string name="o_chirish">O\'chirish</string>
+    <string name="video_link">You tube video link</string>
+    <string name="video_url_info">Video you tube havolasidan bulishi kerak</string>
+    <string name="instagram_link">Instagram link</string>
+    <string name="telegram_link">Telegram link</string>
+    <string name="you_tube_link">You tube link</string>
+    <string name="tashkent">Tashkent</string>
+    <string name="samarqand">Samarqand</string>
+    <string name="lokatsiya">Lokatsiya</string>
+    <string name="yangi_qo_shish">+ Yangi qo\'shish</string>
 
 </resources>

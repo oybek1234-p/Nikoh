@@ -1,5 +1,8 @@
 package com.uz.nikoh.user
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 class UserMini {
     var id = ""
     var name = ""

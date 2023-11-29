@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.uz.ui.base.MyToolBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/rasmlar" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_12">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior">
+
+              <com.google.android.material.appbar.CollapsingToolbarLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layout_scrollFlags="scroll"
+                  >
+                  <LinearLayout
+                      android:id="@+id/app_bar_container"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+                      <FrameLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content">
+
+                          <TextView
+                              style="@style/Title3_17"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="center_vertical"
+                              android:text="@string/asosiy_rasm"
+                              android:textColor="?colorOnSurface" />
+
+                          <com.google.android.material.button.MaterialButton
+                              android:id="@+id/button_add_main_photo"
+                              style="@style/OutlineButton"
+                              android:drawableLeft="@drawable/edit_ic"
+                              android:drawableTint="?colorPrimary"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="end"
+                              android:text="@string/qo_shish" />
+                      </FrameLayout>
+
+                      <com.google.android.material.imageview.ShapeableImageView
+                          android:id="@+id/photo_view_main"
+                          android:layout_width="match_parent"
+                          android:layout_height="200dp"
+                          android:layout_marginTop="@dimen/dimen_12"
+                          android:background="?colorSurfaceVariant"
+                          android:scaleType="centerCrop"
+                          app:shapeAppearanceOverlay="@style/RadiusImageView12" />
+
+                      <FrameLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dimen_24">
+
+                          <TextView
+                              android:id="@+id/photos_header"
+                              style="@style/Title3_17"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="center_vertical"
+                              android:text="@string/rasmlar"
+                              android:textColor="?colorOnSurface" />
+
+                          <com.google.android.material.button.MaterialButton
+                              android:id="@+id/button_add_photos"
+                              style="@style/OutlineButton"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="end"
+                              android:drawableLeft="@drawable/edit_ic"
+                              android:drawableTint="?colorPrimary"
+                              android:text="@string/qo_shish" />
+                      </FrameLayout>
+                  </LinearLayout>
+              </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_photos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

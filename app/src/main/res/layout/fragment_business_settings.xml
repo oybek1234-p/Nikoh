@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.uz.ui.base.MyToolBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/sozlamalar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/nameAboutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/info_ic"
+                    app:title="@string/nomi_va_haqida" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/imagesButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/image_ic"
+                    app:title="@string/rasmlar" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/imagesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/business_simple_image_view" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/videoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/video_ic"
+                    app:title="@string/video" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/mediaLinkButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/media_link_ic"
+                    app:title="@string/media_linklar" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/locationButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/location_ic"
+                    app:title="@string/joylashuv" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/categoryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/category_ic"
+                    app:title="@string/kategoriya" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/subCatButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="@string/subkategoriyalar" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/featuresButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="@string/qulayliklar" />
+
+                <com.uz.ui.fragments.components.TextInfoButton
+                    android:id="@+id/productsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconRes="@drawable/product_ic"
+                    app:title="@string/tovarlar" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
