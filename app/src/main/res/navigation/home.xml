@@ -13,4 +13,36 @@
             app:destination="@id/auth_graph" />
     </fragment>
     <include app:graph="@navigation/auth_graph" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.uz.ui.fragments.category.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/chooseSearchLocationFragment"
+        android:name="com.uz.ui.fragments.location.ChooseSearchLocationFragment"
+        android:label="ChooseSearchLocationFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.uz.ui.fragments.search.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.uz.ui.fragments.search.SearchResultsFragment"
+        android:label="SearchResultsFragment" />
+    <fragment
+        android:id="@+id/businessDetailsFragment"
+        android:name="com.uz.ui.fragments.details.BusinessDetailsFragment"
+        android:label="BusinessDetailsFragment" />
+    <fragment
+        android:id="@+id/businessProductsFragment"
+        android:name="com.uz.ui.fragments.product.BusinessProductsFragment"
+        android:label="BusinessProductsFragment" />
+    <fragment
+        android:id="@+id/viewProductFragment"
+        android:name="com.uz.ui.fragments.product.ViewProductFragment"
+        android:label="ViewProductFragment" />
+    <fragment
+        android:id="@+id/searchFilterFragment"
+        android:name="com.uz.ui.fragments.search.SearchFilterFragment"
+        android:label="SearchFilterFragment" />
 </navigation>

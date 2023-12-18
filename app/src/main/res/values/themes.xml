@@ -17,7 +17,7 @@
         <item name="colorOnError">#FFFFFF</item>
         <item name="colorErrorContainer">#FFDAD6</item>
         <item name="colorOnErrorContainer">#410002</item>
-        <item name="colorSurface">#FBF9F1</item>
+        <item name="colorSurface">#FFFFFF</item>
         <item name="colorOnSurface">#1B1C17</item>
         <item name="colorSurfaceContainerLowest">#FFFFFF</item>
         <item name="colorSurfaceContainerLow">#F5F4EC</item>
@@ -31,6 +31,4 @@
         <item name="colorOutline">#76786B</item>
         <item name="colorOutlineVariant">#C6C8B9</item>
     </style>
-
-
 </resources>

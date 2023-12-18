@@ -19,23 +19,23 @@ class LoadingHelper<T> {
     }
 
     private fun addCallback(id: String, loadCallback: LoadCallback<T>) {
-        loadingCallbacks.getOrPut(id) { arrayListOf() }.add(loadCallback)
+        loadingCallbacks[id] = arrayListOf<LoadCallback<T>>().apply {
+            add(loadCallback)
+        }
     }
 
     fun postResult(id: String, result: DataResult<T>) {
-        removeLoading(id)
         loadingCallbacks[id]?.apply {
             forEach {
                 it.invoke(result)
             }
-            clear()
         }
-
+        removeLoading(id)
     }
 
     fun observeLoad(id: String, done: LoadCallback<T>, load: LoadingHelper<T>.() -> Unit): Boolean {
+        addCallback(id, done)
         if (isLoading(id)) {
-            addCallback(id, done)
             return true
         } else {
             setLoading(id)

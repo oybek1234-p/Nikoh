@@ -1,32 +1,31 @@
 package com.uz.nikoh.user
 
 import com.google.firebase.database.DatabaseReference
-import com.uz.base.data.LoadCallback
-import com.uz.base.data.LoadingHelper
 import com.uz.base.data.firebase.DataResult
 import com.uz.base.data.firebase.databaseReference
 import com.uz.nikoh.utils.TimeUtils
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 object UserController : UserControllerInterface {
 
     private const val USERS_PATH = "users"
     private val usersReference = databaseReference(USERS_PATH)
     private val usersMap = hashMapOf<String, User>()
-    private val loadingHelper = LoadingHelper<User>()
 
     override fun userReference(userId: String): DatabaseReference {
         return usersReference.child(userId)
     }
 
-    override fun loadUser(userId: String, done: LoadCallback<User>) {
-        if (userId.isEmpty()) return
-        loadingHelper.observeLoad(userId, done) {
-            usersReference.child(userId).get().addOnCompleteListener {
-                val user = it.result?.getValue(User::class.java)
-                val result = DataResult(user, it.isSuccessful, it.exception)
-                loadingHelper.postResult(userId, result)
-                done.invoke(result)
+    override suspend fun loadUser(userId: String) = suspendCoroutine { c ->
+        if (userId.isEmpty()) return@suspendCoroutine
+        usersReference.child(userId).get().addOnCompleteListener { it ->
+            val user = it.result?.getValue(User::class.java)
+            val result = DataResult(user, it.isSuccessful, it.exception)
+            user?.let {
+                usersMap[userId] = user
             }
+            c.resume(result)
         }
     }
 

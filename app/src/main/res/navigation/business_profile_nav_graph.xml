@@ -59,4 +59,28 @@
         android:id="@+id/businessLocationFragment"
         android:name="com.uz.ui.fragments.profile.business.settings.BusinessLocationFragment"
         android:label="BusinessLocationFragment" />
+    <fragment
+        android:id="@+id/businessSubcategoriesFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessSubcategoriesFragment"
+        android:label="BusinessSubcategoriesFragment" />
+    <fragment
+        android:id="@+id/businessFeaturesFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessFeaturesFragment"
+        android:label="BusinessFeaturesFragment" />
+    <fragment
+        android:id="@+id/businessProductsFragment"
+        android:name="com.uz.ui.fragments.product.BusinessProductsFragment"
+        android:label="BusinessProductsFragment" />
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.uz.ui.fragments.product.AddProductFragment"
+        android:label="AddProductFragment" />
+    <fragment
+        android:id="@+id/viewProductFragment"
+        android:name="com.uz.ui.fragments.product.ViewProductFragment"
+        android:label="ViewProductFragment" />
+    <fragment
+        android:id="@+id/businessPriceSetFragment"
+        android:name="com.uz.ui.fragments.profile.business.settings.BusinessPriceSetFragment"
+        android:label="BusinessPriceSetFragment" />
 </navigation>

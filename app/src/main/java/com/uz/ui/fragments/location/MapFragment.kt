@@ -20,6 +20,7 @@ import com.uz.nikoh.databinding.FragmentMapBinding
 import com.uz.nikoh.location.City
 import com.uz.nikoh.location.LocationData
 import com.uz.nikoh.location.LocationHelper
+import com.uz.nikoh.location.addressWithCity
 import com.uz.nikoh.utils.JsonUtils
 import com.uz.ui.base.BaseFragment
 import com.uz.ui.utils.visibleOrGone
@@ -121,7 +122,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>() {
     private fun animateToCurrentCity() {
         animateToCurrentCityJob = lifecycleScope.launch {
             val currentCity = LocationHelper.getClientCity() ?: return@launch
-            val cityLatLng = City.findByName(currentCity).latLng
+            val cityLatLng = City.findByName(currentCity)!!.latLng
             animateToLocation(cityLatLng)
             animateToCurrentCityJob = null
         }
@@ -165,7 +166,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>() {
                     continueButton.isEnabled = canContinue()
                 }
                 location.observe(viewLifecycleOwner) {
-                    addressView.text = it?.address?.ifEmpty { it.city } ?: it?.city
+                    addressView.text = it?.addressWithCity()
                 }
             }
             continueButton.setOnClickListener {

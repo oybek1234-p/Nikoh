@@ -13,10 +13,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photo_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:background="?colorSurfaceContainerHighest"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/CircleImageView" />
@@ -37,7 +36,6 @@
             style="@style/Text2_15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_4"
             android:text="@string/_998971871415"
             android:textColor="?colorOnSurfaceVariant"
             app:layout_constraintStart_toStartOf="@+id/name_view"
@@ -49,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:rotation="180"
+            android:visibility="gone"
             android:src="@drawable/arrow_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

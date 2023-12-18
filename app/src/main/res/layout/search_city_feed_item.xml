@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12"
+        android:layout_marginVertical="@dimen/dimen_4"
+        android:paddingHorizontal="@dimen/dimen_12"
+        app:cardBackgroundColor="?colorSurfaceContainerLow"
+        app:cardCornerRadius="@dimen/dimen_24">
+
+        <TextView
+            style="@style/Text2_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/dimen_18"
+            android:layout_marginVertical="@dimen/dimen_8"
+            android:text="@string/qidiruv_manzili"
+            android:textColor="?colorOnSurface" />
+
+        <TextView
+            android:id="@+id/address_view"
+            style="@style/Headline3_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/dimen_18"
+            android:layout_marginVertical="@dimen/dimen_8"
+            android:text="@string/location_address"
+            android:drawablePadding="@dimen/dimen_12"
+            android:textColor="?colorPrimary"
+            app:drawableLeftCompat="@drawable/location_ic"
+            app:drawableTint="?colorPrimary" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

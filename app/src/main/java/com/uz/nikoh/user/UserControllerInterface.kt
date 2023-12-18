@@ -5,7 +5,7 @@ import com.uz.base.data.firebase.DataResult
 
 interface UserControllerInterface {
 
-    fun loadUser(userId: String, done: (result: DataResult<User>) -> Unit)
+    suspend fun loadUser(userId: String): DataResult<User>
     fun getUser(userId: String): User?
     fun userExistsCache(userId: String): Boolean
     fun updateLastSeen(userId: String) {}

@@ -11,10 +11,10 @@ import com.uz.nikoh.utils.TimeUtils
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@OptIn(DelicateCoroutinesApi::class)
 object CurrentUser {
 
     private val config = UserConfig()
@@ -28,15 +28,16 @@ object CurrentUser {
         if (user.isBusiness) {
             businessOwner = BusinessOwner()
         }
-        updateFromNetwork()
+        GlobalScope.launch {
+            updateFromNetwork()
+        }
     }
 
-    private fun updateFromNetwork() {
+    private suspend fun updateFromNetwork() {
         if (userLogged()) {
-            UserController.loadUser(user.id) {
-                if (it.success && it.data != null) {
-                    updateUser(it.data, network = false)
-                }
+            val result = UserController.loadUser(user.id)
+            if (result.success && result.data != null) {
+                updateUser(result.data, network = false)
             }
         }
     }
@@ -44,6 +45,13 @@ object CurrentUser {
     fun userLogged() = user.id.isNotEmpty()
 
     private fun userReference() = UserController.userReference(user.id)
+
+    fun signOut() {
+        firebaseAuth().signOut()
+        config.clear()
+        businessOwner?.clear()
+        businessOwner = null
+    }
 
     private fun updateUser(
         newUser: User = user,
@@ -79,6 +87,10 @@ object CurrentUser {
             uploaded.data?.let {
                 setPhoto(it.url)
                 user.photo = it.url
+                businessOwner?.apply {
+                    business?.admin?.photo = user.photo
+                    updateAdmin()
+                }
                 updateUser(network = false)
                 userReference().updateChildren(mapOf(Pair(User::photo.name, it.url)))
             }
@@ -88,22 +100,31 @@ object CurrentUser {
     fun setName(name: String) {
         if (userLogged().not()) return
         user.name = name
+        businessOwner?.apply {
+            business?.admin?.name = name
+            updateAdmin()
+        }
         updateUser(network = false)
         userReference().updateChildren(mapOf(Pair(User::name.name, name)))
     }
 
-    suspend fun applyFirebaseUser(result: (user: User?) -> Unit) = withContext(Dispatchers.Main) {
-        val firebaseUser = firebaseAuth().currentUser ?: return@withContext
-        if (firebaseUser.phoneNumber.isNullOrEmpty()) return@withContext
-        val uid = firebaseUser.uid
-
-        UserController.loadUser(uid) {
+    suspend fun applyFirebaseUser(
+        debug: Boolean = false,
+        debugPhone: String? = null,
+        result: (user: User?) -> Unit
+    ) = withContext(Dispatchers.Main) {
+        val firebaseUser = firebaseAuth().currentUser
+        if (debug.not() && firebaseUser == null) return@withContext
+        if (debug && debugPhone.isNullOrEmpty()) return@withContext
+        val uid = firebaseUser?.uid ?: debugPhone!!
+        val userResult = UserController.loadUser(uid)
+        userResult.let {
             var user = it.data
             val exists = user != null
             if (user == null) {
                 user = User().apply {
                     id = uid
-                    phone = firebaseUser.phoneNumber!!
+                    phone = firebaseUser?.phoneNumber ?: debugPhone ?: ""
                     createdAt = TimeUtils.currentTime()
                 }
             }
@@ -113,8 +134,9 @@ object CurrentUser {
                 }
             }
             if (exists && user.isBusiness) {
-                MainScope().launch {
-                    val businessL = BusinessController.loadBusiness(user.id)
+                launch(Dispatchers.Main) {
+                    val businessL = BusinessController.Business.loadBusiness(user.id)
+
                     if (businessL != null) {
                         businessOwner = BusinessOwner().apply {
                             update(businessL, false)

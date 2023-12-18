@@ -21,12 +21,27 @@
             app:title="@string/akkaunt" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/edit_button"
+            app:shapeAppearanceOverlay="@style/CircleImageView"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?colorTertiary"
+            android:scaleType="center"
+            android:src="@drawable/edit_ic"
+            android:translationY="-24dp"
+            android:elevation="@dimen/dimen_14"
+            android:tint="?colorOnTertiary"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_view"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view"
+            app:layout_constraintTop_toBottomOf="@+id/photo_view" />
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photo_view"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:background="?colorSurfaceDim"
             android:layout_marginTop="@dimen/dimen_24"
+            android:background="?colorSurface"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -36,8 +51,8 @@
             android:id="@+id/name_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_24"
             android:layout_marginHorizontal="@dimen/dimen_24"
+            android:layout_marginTop="@dimen/dimen_24"
             android:hint="@string/ismingiz"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_24"
+            android:layout_marginTop="@dimen/dimen_8"
             android:focusable="false"
             android:hint="@string/mobil_nomer"
-            android:layout_marginTop="@dimen/dimen_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_view">
@@ -67,10 +82,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save_button"
-            android:layout_margin="@dimen/dimen_24"
             style="@style/FilledButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_24"
             android:text="@string/saqlash"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -84,5 +99,19 @@
             app:layout_constraintEnd_toEndOf="@+id/photo_view"
             app:layout_constraintStart_toStartOf="@+id/photo_view"
             app:layout_constraintTop_toTopOf="@+id/photo_view" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signout_button"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/arrow_back"
+            android:drawableTint="?colorError"
+            android:backgroundTint="?colorErrorContainer"
+            android:textColor="?colorError"
+            android:layout_marginBottom="@dimen/dimen_24"
+            android:text="@string/akkaundan_chiqish"
+            app:layout_constraintBottom_toTopOf="@+id/save_button"
+            app:layout_constraintStart_toStartOf="@+id/save_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

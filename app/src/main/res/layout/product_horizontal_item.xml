@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?selectableItemBackground"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photo_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="?colorSurfaceDim"
+            app:layout_constraintDimensionRatio="1:0.6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RadiusImageView12" />
+
+        <TextView
+            android:id="@+id/title_view"
+            style="@style/Headline3_15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_4"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/tovarlar"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/photo_view"
+            app:layout_constraintTop_toBottomOf="@+id/photo_view" />
+
+        <TextView
+            android:id="@+id/subtitle_view"
+            style="@style/Text1_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/subkategoriyalar"
+            android:textColor="?colorOnSurfaceVariant"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/title_view"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toBottomOf="@+id/title_view" />
+
+        <TextView
+            android:id="@+id/price_view"
+            style="@style/Text2_15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:text="@string/sample_price"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toTopOf="@+id/subtitle_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

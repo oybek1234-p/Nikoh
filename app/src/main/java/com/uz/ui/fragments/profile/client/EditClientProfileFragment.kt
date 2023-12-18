@@ -48,6 +48,10 @@ class EditClientProfileFragment : BaseFragment<FragmentEditProfileClientBinding>
                     CurrentUser.setPhoto(url)
                 }
             }
+            signoutButton.setOnClickListener {
+                CurrentUser.signOut()
+                mainActivity()?.recreateMy()
+            }
             phoneView.editText?.apply {
                 isFocusable = false
                 isClickable = false

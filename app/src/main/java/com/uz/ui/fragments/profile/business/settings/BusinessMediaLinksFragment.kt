@@ -12,7 +12,6 @@ class BusinessMediaLinksFragment : BaseFragment<FragmentBusinessMediaLinksBindin
     override val layId: Int
         get() = R.layout.fragment_business_media_links
 
-
     private fun instagramText() = binding?.instagramView?.editText?.text?.toString()
     private fun telegramText() = binding?.telegramView?.editText?.text?.toString()
     private fun youTubeText() = binding?.youtubeView?.editText?.text?.toString()

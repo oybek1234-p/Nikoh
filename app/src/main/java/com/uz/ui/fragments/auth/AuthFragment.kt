@@ -1,13 +1,15 @@
 package com.uz.ui.fragments.auth
 
+import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.github.vacxe.phonemask.PhoneMaskManager
 import com.uz.nikoh.R
+import com.uz.nikoh.appContext
 import com.uz.nikoh.databinding.FragmentAuthBinding
+import com.uz.nikoh.user.CurrentUser
 import com.uz.nikoh.utils.PhoneUtils
 import com.uz.ui.base.BaseFragment
 import com.uz.ui.utils.showKeyboard
@@ -68,7 +70,20 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
                 }
             }
             continueButton.setOnClickListener {
-                sendCode()
+                val isDebuggable =
+                    appContext.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+                if (isDebuggable) {
+                    lifecycleScope.launch {
+                        viewModel.applyNewUser(true, phoneText!!)
+                        if (CurrentUser.user.name.isEmpty()) {
+                            navigate(R.id.getUserNameFragment)
+                        } else {
+                            mainActivity()?.showBaseScreen(true)
+                        }
+                    }
+                } else {
+                    sendCode()
+                }
             }
         }
     }

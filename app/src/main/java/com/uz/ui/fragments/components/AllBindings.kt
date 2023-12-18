@@ -18,6 +18,8 @@ fun BusinessItemBinding.set(business: Business) {
     if (business.photoMain != null) {
         photoView.loadUrl(business.photoMain!!.url)
     }
-    photoCountView.text = business.allPhotosCount().toString()
+    val count = business.allPhotosCount()
+    photoCountView.visibleOrGone(count > 0)
+    photoCountView.text = count.toString()
     titleView.text = business.name
 }

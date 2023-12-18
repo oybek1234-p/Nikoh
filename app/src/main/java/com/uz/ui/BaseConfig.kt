@@ -8,11 +8,13 @@ object BaseConfig {
     var languageCode = ""
     private const val DEFAULT_LANGUAGE_CODE = "uz"
     var isDarkTheme = false
+    var searchLocation = ""
 
     fun get() {
         preference.apply {
             languageCode = getString("language", DEFAULT_LANGUAGE_CODE) ?: ""
             isDarkTheme = getBoolean("dark", AppTheme.isSystemNightMode())
+            searchLocation = getString("sLoc", "") ?: ""
         }
     }
 
@@ -24,6 +26,7 @@ object BaseConfig {
         preference.edit().apply {
             putString("language", languageCode)
             putBoolean("dark", isDarkTheme)
+            putString("sLoc", searchLocation)
             apply()
         }
     }

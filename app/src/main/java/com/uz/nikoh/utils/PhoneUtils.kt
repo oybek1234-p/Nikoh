@@ -1,8 +1,14 @@
 package com.uz.nikoh.utils
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.widget.EditText
+import androidx.core.content.ContextCompat.startActivity
 import com.github.vacxe.phonemask.PhoneMaskManager
 import com.uz.base.exception.ExceptionHandler
+import com.uz.nikoh.appContext
+
 
 object PhoneUtils {
 
@@ -57,4 +63,8 @@ object PhoneUtils {
 //        return builder.toString()
 //    }
 
+    fun openCallPhone(activity: Activity,phone: String) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+        activity.startActivity(intent)
+    }
 }

@@ -20,8 +20,8 @@ class CategoryFragment : BaseFragment<FragmentCategoriesBinding>() {
     override val layId: Int
         get() = R.layout.fragment_categories
 
-    var selectedId: String? = null
-    var selectable = false
+    private var selectedId: String? = null
+    private var selectable = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

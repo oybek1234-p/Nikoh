@@ -19,6 +19,12 @@ open class BaseAdapter<Model, Binding : ViewDataBinding>(
         clickListeners.add(clickListener)
     }
 
+    open fun getLayoutId(position: Int): Int = itemResId
+
+    override fun getItemViewType(position: Int): Int {
+        return getLayoutId(position)
+    }
+
     fun removeClickListener(clickListener: ListClickListener<Model>) {
         clickListeners.remove(clickListener)
     }
@@ -37,7 +43,7 @@ open class BaseAdapter<Model, Binding : ViewDataBinding>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = DataBindingUtil.inflate<Binding>(
-            LayoutInflater.from(parent.context), itemResId, parent, false
+            LayoutInflater.from(parent.context), viewType, parent, false
         )
         val viewHolder = ViewHolder<Binding>(binding)
         viewHolder.itemView.apply {

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:padding="@dimen/dimen_12">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/photo_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="?colorSurfaceDim"
+            android:elevation="0dp"
+            app:cardCornerRadius="@dimen/dimen_12"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="1:0.6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RadiusImageView12">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/photo_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="@dimen/dimen_8"
+                app:dotsColor="@color/white"
+                app:dotsSize="@dimen/dimen_8"
+                app:dotsStrokeColor="@color/white" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/title_view"
+            style="@style/Headline2_16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/tovarlar"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintEnd_toStartOf="@+id/price_view"
+            app:layout_constraintStart_toStartOf="@+id/photo_view"
+            app:layout_constraintTop_toBottomOf="@+id/photo_view" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_12"
+            android:elevation="0dp"
+            app:cardBackgroundColor="#40000000"
+            app:cardCornerRadius="@dimen/dimen_12"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_view"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_8"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/image_ic"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/photo_count_view"
+                    style="@style/Caption2_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_4"
+                    android:layout_marginStart="4dp"
+                    android:text="1/12"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/subtitle_view"
+            style="@style/Text1_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:drawablePadding="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text="@string/subkategoriyalar"
+            android:textColor="?colorOnSurfaceVariant"
+            app:drawableStartCompat="@drawable/location_ic"
+            app:drawableTint="?colorOutline"
+            app:layout_constraintEnd_toStartOf="@+id/price_type_view"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toBottomOf="@+id/title_view" />
+
+        <TextView
+            android:id="@+id/info_view"
+            style="@style/Text1_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/dimen_24"
+            android:text="@string/venue_title_place"
+            android:textColor="?colorOnSurfaceVariant"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle_view" />
+
+        <TextView
+            android:id="@+id/price_view"
+            style="@style/Text1_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_price"
+            android:textColor="?colorOnSurface"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/photo_view"
+            app:layout_constraintTop_toTopOf="@+id/title_view" />
+
+        <TextView
+            android:id="@+id/price_type_view"
+            style="@style/Subtitle3_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boshlangich_narx"
+            android:textColor="?colorOnSurfaceVariant"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

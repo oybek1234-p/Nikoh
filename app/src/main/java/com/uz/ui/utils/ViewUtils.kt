@@ -6,8 +6,10 @@ import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.postDelayed
+import androidx.lifecycle.MutableLiveData
 import com.google.android.material.color.MaterialColors
 import com.uz.base.exception.ExceptionHandler
 import com.uz.nikoh.appContext
@@ -67,3 +69,18 @@ fun Context.getMaterialColor(colorId: Int) =
         colorId,
         0
     )
+
+fun <T> MutableLiveData<T>.update() = postValue(value)
+
+fun TextView.makeExpandable() {
+    val currentLine = maxLines
+    var expanded = false
+    setOnClickListener {
+        maxLines = if (expanded) {
+            currentLine
+        } else {
+            Int.MAX_VALUE
+        }
+        expanded = !expanded
+    }
+}

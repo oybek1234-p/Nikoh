@@ -5,7 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
-    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -24,7 +24,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+         //   isMinifyEnabled = true
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -40,6 +41,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -73,19 +75,25 @@ dependencies {
     implementation("com.github.vacxe:phonemask:1.0.5")
 
     val dagger_version = "2.28.3"
-    implementation ("com.google.dagger:dagger:2.16")
+    implementation("com.google.dagger:dagger:2.16")
     kapt("com.google.dagger:dagger-compiler:2.16")
 
-    api ("io.reactivex.rxjava2:rxandroid:2.1.1")
-    api ("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    api("io.reactivex.rxjava2:rxandroid:2.1.1")
+    api("org.jetbrains.kotlin:kotlin-reflect:1.8.22")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
-    implementation ("io.ktor:ktor-client-android:1.5.0")
+    implementation("io.ktor:ktor-client-android:1.5.0")
 
-    implementation ("id.zelory:compressor:3.0.1")
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("id.zelory:compressor:3.0.1")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.algolia:instantsearch-android:3.3.0")
+
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+    implementation ("com.github.stfalcon-studio:StfalconImageViewer:v1.0.1")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 }

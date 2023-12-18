@@ -57,7 +57,7 @@
                           <com.google.android.material.button.MaterialButton
                               android:id="@+id/button_add_main_photo"
                               style="@style/OutlineButton"
-                              android:drawableLeft="@drawable/edit_ic"
+                              android:drawableLeft="@drawable/add_image_ic"
                               android:drawableTint="?colorPrimary"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_gravity="end"
-                              android:drawableLeft="@drawable/edit_ic"
+                              android:drawableLeft="@drawable/add_image_ic"
                               android:drawableTint="?colorPrimary"
                               android:text="@string/qo_shish" />
                       </FrameLayout>

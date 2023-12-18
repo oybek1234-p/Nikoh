@@ -9,25 +9,25 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="@dimen/dimen_18">
+        android:paddingHorizontal="@dimen/dimen_18"
+        android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/title_view"
             style="@style/Title3_17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="@string/title"
             android:textColor="?colorOnSurface" />
 
         <ImageView
+            android:id="@+id/arrow_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/arrow_view"
-            android:visibility="gone"
-            android:src="@drawable/arrow_back"
-            android:rotation="180"
             android:layout_gravity="end"
+            android:rotation="180"
+            android:src="@drawable/arrow_back"
+            android:visibility="gone"
             app:tint="?colorOnSurfaceVariant" />
     </FrameLayout>
 </layout>

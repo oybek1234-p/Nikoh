@@ -12,19 +12,46 @@ object Categories {
 
     private fun getString(id: Int) = appContext.getString(id)
 
+    private val subCategories = mapOf(
+        Pair(
+            CatsId.RESTORAN.name,
+            listOf(
+                SubCategory.MarryMe,
+                SubCategory.LoveStory,
+                SubCategory.NaxorgiOsh,
+                SubCategory.OilaviyFotosesiya,
+                SubCategory.TuyKechasi
+            )
+        )
+    )
+
+    private val features = mapOf(
+        Pair(
+            CatsId.RESTORAN.name,
+            listOf(
+                BusinessFeature.HAMYONBOB_NARX,
+                BusinessFeature.WIFI,
+                BusinessFeature.KATTA_PARKOVKA
+            )
+        )
+    )
+
+    fun getFeatures(catId: String) = BusinessFeature.values().toList()
+    fun getSubcategories(catId: String) = SubCategory.values().toList()
+
     val categories by lazy {
         listOf(
-            Category(getString(R.string.oformleniya), R.string.oform_url, CatsId.OFORMLENIYA),
-            Category(getString(R.string.qo_shiqchi), R.string.qosh_url, CatsId.QOSHIQCHI),
-            Category(getString(R.string.restoran), R.string.restoran_url, CatsId.RESTORAN),
-            Category(getString(R.string.boshlovchi), R.string.boshlovchi_url, CatsId.BOSHLOVCHI),
-            Category(getString(R.string.kartej), R.string.kartej_url, CatsId.KARTEJ),
-            Category(getString(R.string.kuylak), R.string.kuylak_url, CatsId.KUYLAK),
-            Category(getString(R.string.gullar), R.string.gullar_url, GULLAR),
-            Category(getString(R.string.sarpo), R.string.sarpo_url, CatsId.SARPO_SANDIQ),
-            Category(getString(R.string.raqqoslar), R.string.raqqos_url, CatsId.RAQQOSLAR),
-            Category(getString(R.string.karvin), R.string.karvin_url, CatsId.KARVIN),
-            Category(getString(R.string.zaks), R.string.zaks_url, CatsId.ZAKS),
+            Category(getString(R.string.oformleniya), R.string.oform_url, CatsId.OFORMLENIYA, true),
+            Category(getString(R.string.qo_shiqchi), R.string.qosh_url, CatsId.QOSHIQCHI, false),
+            Category(getString(R.string.restoran), R.string.restoran_url, CatsId.RESTORAN,false),
+            Category(getString(R.string.boshlovchi), R.string.boshlovchi_url, CatsId.BOSHLOVCHI,false),
+            Category(getString(R.string.kartej), R.string.kartej_url, CatsId.KARTEJ,true),
+            Category(getString(R.string.kuylak), R.string.kuylak_url, CatsId.KUYLAK,true),
+            Category(getString(R.string.gullar), R.string.gullar_url, GULLAR,true),
+            Category(getString(R.string.sarpo), R.string.sarpo_url, CatsId.SARPO_SANDIQ,true),
+            Category(getString(R.string.raqqoslar), R.string.raqqos_url, CatsId.RAQQOSLAR,false),
+            Category(getString(R.string.karvin), R.string.karvin_url, CatsId.KARVIN,true),
+            Category(getString(R.string.zaks), R.string.zaks_url, CatsId.ZAKS,false),
             Category(getString(R.string.video), R.string.video_url, CatsId.VIDEO),
             Category(getString(R.string.foto), R.string.foto_url, CatsId.FOTO),
             Category(getString(R.string.hostes), R.string.hostes_url, CatsId.HOSTES),
@@ -50,5 +77,5 @@ object Categories {
     }
 
     fun getCategory(id: CatsId) = categories.find { it.catId == id }
-    fun getCategory(nameId: String) = categories.find { it.catId.name == nameId }
+    fun getCategory(nameId: String?) = categories.find { it.catId.name == nameId }
 }

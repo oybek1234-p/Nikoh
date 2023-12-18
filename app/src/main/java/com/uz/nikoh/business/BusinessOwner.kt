@@ -32,10 +32,19 @@ class BusinessOwner {
     private val sharedPrefBusiness = SharedPrefUtils.getSharedPreference("business")
     private val cacheKey = "business"
 
+    fun updateAdmin() {
+        businessDocument.update("admin", business?.admin)
+    }
+
     private val businessDocument: DocumentReference
-        get() = BusinessController.businessDocument(
+        get() = BusinessController.Business.businessDocument(
             requireBusiness().id
         )
+
+    fun clear() {
+        business = null
+        save()
+    }
 
     @OptIn(InternalSerializationApi::class)
     private fun get() {
@@ -87,9 +96,10 @@ class BusinessOwner {
         save()
 
         if (network) {
-            BusinessController.businessDocument(business.id).set(business).justResult { s ->
-                done?.invoke(s)
-            }
+            BusinessController.Business.businessDocument(business.id).set(business)
+                .justResult { s ->
+                    done?.invoke(s)
+                }
         }
     }
 
@@ -186,6 +196,42 @@ class BusinessOwner {
                     Pair(Business::instagramLink.name, instagram)
                 )
             )
+        }
+    }
+
+    fun setSubcategories(subcategories: List<String>) {
+        requireBusiness().apply {
+            this.subCategoryIds = subcategories
+            businessLive.postValue(this)
+            save()
+            businessDocument.update(Business::subCategoryIds.name, subcategories)
+        }
+    }
+
+    fun setFeatures(features: List<String>) {
+        requireBusiness().apply {
+            this.featureIds = features
+            businessLive.postValue(this)
+            save()
+            businessDocument.update(Business::featureIds.name, features)
+        }
+    }
+
+    fun increaseProducts(increase: Boolean) {
+        requireBusiness().apply {
+            productsCount = if (increase) productsCount + 1 else productsCount - 1
+            businessLive.postValue(this)
+            save()
+            businessDocument.increase(Business::productsCount, increase)
+        }
+    }
+
+    fun setPrice(updatedPrice: BusinessPrice) {
+        requireBusiness().apply {
+            price = updatedPrice
+            businessLive.postValue(this)
+            save()
+            businessDocument.update(Business::price.name, updatedPrice)
         }
     }
 }

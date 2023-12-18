@@ -33,18 +33,17 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/Title2_20"
+            style="@style/Text1_16"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_24"
-            android:layout_marginTop="@dimen/dimen_24"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/dimen_18"
             android:text="Platformada ishlashni boshlang"
             android:textColor="?colorOnSurface"
             app:layout_constraintBottom_toTopOf="@+id/continue_button"
             app:layout_constraintEnd_toEndOf="@+id/photo_view"
-            app:layout_constraintStart_toStartOf="@+id/photo_view"
-            app:layout_constraintTop_toBottomOf="@+id/photo_view" />
+            app:layout_constraintStart_toStartOf="@+id/photo_view" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/agree_button"

@@ -119,7 +119,7 @@ class VerifyFragment : BaseFragment<FragmentVerifyBinding>() {
                                 )
                             })
                     } else {
-                        mainActivity()?.showBaseScreen()
+                        mainActivity()?.showBaseScreen(true)
                     }
                 }
             }

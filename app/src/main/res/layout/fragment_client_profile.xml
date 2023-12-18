@@ -26,6 +26,7 @@
 
             <com.uz.ui.fragments.components.TextInfoButton
                 android:id="@+id/button_settings"
+                android:layout_marginTop="@dimen/dimen_24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

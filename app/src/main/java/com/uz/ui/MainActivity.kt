@@ -9,10 +9,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.snackbar.Snackbar
 import com.uz.nikoh.R
 import com.uz.nikoh.databinding.ActivityMainBinding
 import com.uz.nikoh.locale.LocaleController
+import com.uz.nikoh.location.LocationHelper
 import com.uz.nikoh.user.CurrentUser
+import com.uz.ui.fragments.location.SearchLocationSheet
 import com.uz.ui.utils.getMaterialColor
 import com.uz.ui.utils.visibleOrGone
 import kotlinx.coroutines.Dispatchers
@@ -47,16 +50,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun showSnack(text: String) {
+        Snackbar.make(window.decorView, text, Snackbar.LENGTH_SHORT).show()
+    }
+
+    fun requestSearchLocation() {
+        if (BaseConfig.searchLocation.isEmpty().not()) return
+        lifecycleScope.launch {
+            val foundCity = LocationHelper.findSearchLocationByNetwork()
+            LocationHelper.setSearchLocation(foundCity)
+            lifecycleScope.launch(Dispatchers.Main) {
+                SearchLocationSheet().show(supportFragmentManager, null)
+            }
+        }
+    }
+
     private fun showOpenScreen() {
         navcontroller.setGraph(R.navigation.open_screen)
     }
 
-    fun showBaseScreen() {
-        for (i in 1..2) {
+    fun showBaseScreen(newUser: Boolean = false) {
+        for (i in 1..3) {
             navcontroller.popBackStack()
         }
         navcontroller.setGraph(R.navigation.base_graph)
         binding?.bottomNavView?.setupWithNavController(navcontroller)
+        if (newUser) {
+            showSnack("${CurrentUser.user.name} ${getString(R.string.profilga_kirildi)}")
+        }
     }
 
     private var bottomSetUp = false

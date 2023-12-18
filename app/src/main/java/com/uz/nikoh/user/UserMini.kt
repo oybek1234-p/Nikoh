@@ -21,4 +21,12 @@ class UserMini {
     }
 }
 
+fun UserMini.toUser() = User().apply {
+    this.id = this@toUser.id
+    this.name = this@toUser.name
+    this.phone = this@toUser.phone
+    this.photo = this@toUser.photo
+    this.isBusiness = this@toUser.isBusiness
+}
+
 fun User.mini() = UserMini(id, name, photo, phone, business = isBusiness)

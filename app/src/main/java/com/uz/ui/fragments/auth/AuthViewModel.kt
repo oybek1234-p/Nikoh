@@ -30,15 +30,20 @@ class AuthViewModel : ViewModel() {
 
     private var smsRetriever: SmsRetriever? = null
 
-    suspend fun applyNewUser() = suspendCoroutine { c ->
-        loading.postValue(true)
-        viewModelScope.launch {
-            CurrentUser.applyFirebaseUser {
-                loading.postValue(false)
-                c.resume(it != null)
+    suspend fun applyNewUser(debug: Boolean = false, phone: String? = null) =
+        suspendCoroutine { c ->
+            loading.postValue(true)
+            viewModelScope.launch {
+                try {
+                    CurrentUser.applyFirebaseUser(debug, phone) {
+                        loading.postValue(false)
+                        c.resume(it != null)
+                    }
+                } catch (e: Exception) {
+                    showToast(e.message.toString())
+                }
             }
         }
-    }
 
     private fun startAutoCodeReceiver() {
         smsRetriever = SmsRetriever(appContext) { code, errorMessage ->

@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -20,7 +21,9 @@ import com.google.android.gms.tasks.Task
 import com.uz.base.exception.ExceptionHandler
 import com.uz.nikoh.appContext
 import com.uz.nikoh.location.ipaddress.IpAddressRetriever
+import com.uz.ui.BaseConfig
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.util.Locale
 
@@ -33,6 +36,29 @@ object LocationHelper {
     private suspend fun getIpAddressInfo() = ipAddressRetriever.getIpAddress()
 
     suspend fun getClientCity() = getIpAddressInfo()?.city
+
+    private val searchLocation get() = BaseConfig.searchLocation
+    var searchLocationLive = MutableLiveData(searchLocation)
+
+    fun getSearchLocationCity(): City {
+        val location = searchLocation
+        if (location.isEmpty()) return City.UZBEKISTAN
+        return City.findByName(location)!!
+    }
+
+    fun setSearchLocation(newLocation: String) {
+        BaseConfig.searchLocation = newLocation
+        BaseConfig.save()
+        searchLocationLive.postValue(newLocation)
+    }
+
+    suspend fun findSearchLocationByNetwork(): String {
+        val city = getClientCity()?.uppercase()
+        val validCity = City.entries.firstOrNull { it.name == city } != null
+
+        if (validCity.not() || city.isNullOrEmpty()) return City.UZBEKISTAN.name
+        return city
+    }
 
     /**
      * Call in onCreate of the fragment
@@ -86,20 +112,44 @@ object LocationHelper {
         }
     }
 
-    private val geocoder by lazy { Geocoder(appContext, Locale.getDefault()) }
+    private val geocoder by lazy { Geocoder(appContext, Locale("uz")) }
 
-    suspend fun getAddress(latLng: LatLng): LocationData? = withContext(Dispatchers.Default) {
-        try {
-            val addresses = geocoder.getFromLocation(
-                latLng.latitude, latLng.longitude, 1
-            )
-            val address = addresses!![0].getAddressLine(0)
-            val city = getClientCity()
+    suspend fun getAddress(latLng: LatLng, times: Int = 0): LocationData =
+        withContext(Dispatchers.Default) {
+            try {
+                val list = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 2)
+                val address = list!![0]
+                val secondAddress = list[1]
+                var tempCity = getClientCity()
+                if (tempCity != null) {
+                    if (City.findByName(tempCity.uppercase()) == null) {
+                        tempCity = address.locality ?: secondAddress.locality ?: ""
+                    }
+                }
+                val city = tempCity!!
 
-            return@withContext LocationData(address, latLng.toMy(), city)
-        } catch (e: Exception) {
-            ExceptionHandler.handle(e)
+                val subLocal = address.subLocality ?: secondAddress?.subLocality ?: ""
+                var text = "$subLocal, $city"
+
+                if (city.isEmpty() || subLocal.isEmpty()) {
+                    text = address.getAddressLine(0)
+                }
+                val subAddress = text.substringBefore(",").trim()
+                val extraCity = text.substringAfter(",").trim().ifEmpty { getClientCity() }
+
+                val addressModel = LocationData()
+                addressModel.address = subAddress
+                addressModel.city = city.ifEmpty { extraCity }
+                addressModel.latLng = latLng.toMy()
+                return@withContext addressModel
+            } catch (e: Throwable) {
+                if (times == 3) {
+                    //
+                } else {
+                    delay(100)
+                    getAddress(latLng, times + 1)
+                }
+            }
+            return@withContext LocationData(null, latLng = latLng.toMy(), null)
         }
-        return@withContext null
-    }
 }

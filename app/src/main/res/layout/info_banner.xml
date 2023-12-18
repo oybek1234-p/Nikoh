@@ -25,7 +25,7 @@
             style="@style/Title2_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_24"
+            android:layout_marginTop="@dimen/dimen_12"
             android:text="@string/title"
             android:textColor="?colorOnSurface"
             app:layout_constraintEnd_toEndOf="@+id/photo_view"

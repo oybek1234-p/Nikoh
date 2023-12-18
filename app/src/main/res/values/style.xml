@@ -33,7 +33,21 @@
         <attr name="title" />
         <attr name="arrowEnabled" />
         <attr name="iconRes" />
-        <attr name="subtitle"/>
+        <attr name="subtitle" />
     </declare-styleable>
+
+    <style name="SheetStyle" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/SheetAppearance</item>
+        <item name="backgroundTint">?colorSurface</item>
+    </style>
+
+    <style name="SheetAppearance" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/dimen_24</item>
+    </style>
 
 </resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorSurface"
+            android:elevation="0dp"
+            android:fadeScrollbars="false"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?colorSurface"
+                android:requiresFadingEdge="none"
+                app:contentScrim="?colorSurface"
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+                app:titleEnabled="false">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:contentInsetStart="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?colorSurface"
+                            android:elevation="@dimen/dimen_4">
+
+                            <ImageView
+                                android:id="@+id/back_button"
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:scaleType="center"
+                                android:src="@drawable/arrow_back"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:tint="?colorOnSurface" />
+
+                            <TextView
+                                android:id="@+id/title_view"
+                                style="@style/Text1_16"
+                                android:layout_width="0dp"
+                                android:layout_height="56dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/title"
+                                android:textColor="?colorOnSurface"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/back_button"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_8"
+                            android:paddingHorizontal="@dimen/dimen_12">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/location_button"
+                                    style="@style/OutlineButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="44dp"
+                                    android:drawableLeft="@drawable/location_ic"
+                                    android:drawablePadding="@dimen/dimen_8"
+                                    android:drawableTint="?colorPrimary"
+                                    android:paddingHorizontal="18dp"
+                                    android:text="@string/tashkent" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/filter_by_button"
+                                    style="@style/OutlineButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="44dp"
+                                    android:layout_marginStart="@dimen/dimen_12"
+                                    android:drawableLeft="@drawable/filter_ic"
+                                    android:drawableTint="?colorPrimary"
+                                    android:paddingHorizontal="18dp"
+                                    android:text="@string/mashxurlari" />
+
+                            </LinearLayout>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/hech_narsa_topilmadi" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

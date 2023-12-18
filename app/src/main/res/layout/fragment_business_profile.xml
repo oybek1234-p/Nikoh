@@ -26,8 +26,11 @@
                 layout="@layout/business_item" />
 
             <include
+                android:layout_marginTop="@dimen/dimen_12"
                 android:id="@+id/admin_header"
-                layout="@layout/header_item" />
+                layout="@layout/header_item"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
 
             <com.uz.ui.fragments.components.UserInfoItem
                 android:id="@+id/user_item"
@@ -38,6 +41,7 @@
                 android:id="@+id/button_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_24"
                 app:iconRes="@drawable/settings_ic"
                 app:title="@string/sozlamalar" />
 

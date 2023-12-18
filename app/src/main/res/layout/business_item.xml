@@ -32,9 +32,9 @@
             android:elevation="@dimen/dimen_4"
             android:gravity="center"
             style="@style/Headline3_15"
-            android:textColor="@color/white"
-            app:drawableLeftCompat="@drawable/image_ic"
-            app:drawableTint="@color/white"
+            android:textColor="#E2E2E2"
+            app:drawableLeftCompat="@drawable/image_placeholder"
+            app:drawableTint="#E8E8E8"
             app:layout_constraintBottom_toBottomOf="@+id/photo_view"
             app:layout_constraintEnd_toEndOf="@+id/photo_view" />
 
@@ -61,7 +61,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_button"
-            style="@style/OutlineButton"
+            style="@style/FilledButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_8"
